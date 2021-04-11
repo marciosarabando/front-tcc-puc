@@ -1,0 +1,60 @@
+<div class="container">
+    <form class="form-signin" [formGroup]="novaContaForm">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h5>Criar uma conta</h5>
+            <br>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="name@example.com">
+                    
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                            <p [innerHTML]="displayMessage.email"></p>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Senha</label>
+                <div class="col-sm-9">
+                    <input formControlName="senha" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <span class="text-danger" *ngIf="displayMessage.senha">
+                        <p [innerHTML]="displayMessage.senha"></p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="form-group row">
+                <label for="inputConfirmPassword" class="col-sm-3 col-form-label">Confirme a Senha</label>
+                <div class="col-sm-9">
+                    <input formControlName="confirmaSenha" type="password" class="form-control" id="inputConfirmPassword" placeholder="Password">
+                    <span class="text-danger" *ngIf="displayMessage.confirmaSenha">
+                        <p [innerHTML]="displayMessage.confirmaSenha"></p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <button type="button" (click)="registrarUsuario()" class="col-sm-12 btn btn-primary btn btn-block">CRIAR MEU ACESSO</button>
+        </div>
+    </div>
+    </form>
+</div>

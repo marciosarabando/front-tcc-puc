@@ -1,0 +1,59 @@
+<div class="container">
+    <br>
+    <div class="row">
+      <div class="col">
+          <div class="card">
+              <div class="card-header">
+                <h5>SISTEMA DE INSPEÇÃO DE INFRAESTRUTURA HOSPITALAR</h5>
+                <h6>{{ estabelecimento }}</h6>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <h4>Olá, {{ primeiroNome | titlecase }}</h4>
+
+    <div *ngIf="perfilAcesso=='Visitante'">
+      
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Acesso criado com sucesso!</h4>
+        <p>  Para para obter acesso aos recursos do seu estabelecimento no INSPEC, entre em contato com o seu supervisor.</p>
+      </div>
+      
+    </div>
+
+    <div class="row justify-content-md-center">
+        
+      <div *ngIf="perfilAcesso=='Administrador' || perfilAcesso=='Supervisor' || perfilAcesso=='Técnico'" class="col-sm-4">
+            <div class="card card bg-light">
+
+                <div class="card-body">
+                  <h5 class="card-title"><span class="fas fa-wrench"></span> INSPEÇÃO</h5>
+                  <p class="card-text">Gestão de Inspeções</p>
+                  <a href="#" [routerLink]="['/inspecao/dash']" class="btn btn-block btn-primary"><span class="fas fa-wrench"></span></a>
+                </div>
+              </div>
+        </div>
+    
+        <div *ngIf="perfilAcesso=='Administrador' || perfilAcesso=='Supervisor'" class="col-sm-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                  <h5 class="card-title"><span class="fas fa-cogs"></span> SISTEMAS</h5>
+                  <p class="card-text">Cadastro de Sistemas</p>
+                  <a href="#" [routerLink]="['/sistema/dash']" class="btn btn-block btn-primary"><span class="fas fa-clipboard-list"></span></a>
+                </div>
+              </div>
+        </div>
+    
+        <div *ngIf="perfilAcesso=='Administrador'" class="col-sm-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                  <h5 class="card-title"><span class="fas fa-user-shield"></span> ACESSO</h5>
+                  <p class="card-text">Usuários e Permissões</p>
+                  <a href="#" [routerLink]="['/usuario/dash']" class="btn btn-block btn-primary"> <span class="fas fa-user-shield"></span></a>
+                </div>
+              </div>
+        </div>
+    </div>
+
+</div>

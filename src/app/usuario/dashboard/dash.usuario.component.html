@@ -1,0 +1,54 @@
+<div class="container">
+    <br>
+    <title-page [titulo]="titulo" [nomeIcone]="nomeIcone"></title-page>
+    <br>
+
+    <div class="card">
+        <div class="card-header">
+          <b>USUARIOS DA UNIDADE</b>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    
+                </div>
+                <div class="col-6 text-right">
+                    <button (click)="gerarCSV()" type="button" class="btn btn-sm btn-success"><span class="fas fa-file-excel"></span> Excel</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>NOME</th>
+                            <th>EMAIL</th>
+                            <th>PERFIL</th>
+                            <th class="text-center">STATUS</th>
+                            <th class="text-center">ABRIR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios">
+                            <td>{{ usuario.nome }}</td>
+                            <td>{{ usuario.email }}</td>
+                            <td>{{ usuario.claims[0].valor }}</td>
+                            
+                            <td class="text-center">
+                                <label *ngIf="usuario.ativo" class="text-success"><span class="fas fa-thumbs-up"></span> Ativo</label>
+                                <label *ngIf="!usuario.ativo" class="text-danger"><span class="fas fa-thumbs-down"></span> Inativo</label>
+                            </td>
+
+                            <td class="text-center">
+                                <button type="button" (click)="abrirDetalhes(usuario.id)" class="btn btn-primary"><span class="fas fa-eye"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+
+        
+        </div>
+    </div>
+</div>

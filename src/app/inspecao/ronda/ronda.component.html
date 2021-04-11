@@ -1,0 +1,49 @@
+<div class="container">
+    <br>
+    <title-page [titulo]="titulo" [nomeIcone]="nomeIcone"></title-page>
+<br>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let sistema of sistemasInspecao">
+            <div class="card" [ngClass]="{'border-success': sistema.inspecaoConcluida, 'border-warning': sistema.status == 'Em andamento'}">
+                <div class="card-header">
+                    <b>{{ sistema.nome }}</b>
+                </div>
+                <div class="card-body">                
+                  
+                    <label *ngIf="sistema.status == 'Não iniciada'"><span class="badge badge-info">Inspeção {{ sistema.status }}</span></label>
+                    <label *ngIf="sistema.status == 'Em andamento'"><span class="badge badge-warning">Inspeção {{ sistema.status }}</span></label>
+                    <label *ngIf="sistema.status == 'Concluída'"><span class="badge badge-success">Inspeção {{ sistema.status }}</span></label>
+                  
+                  <p class="card-text">{{ sistema.descricao }}.</p>
+                  
+                  <div class="alert alert-success" role="alert" *ngIf="sistema.inspecaoConcluida">
+                    Inspeção concluída.
+                  </div>
+                  <button *ngIf="sistema.inspecaoConcluida" href="javascript:void(0)" (click)="iniciarInspecao(sistema.idSistema)" class="btn btn-block btn-primary">ABRIR</button>
+                  
+                  <button href="javascript:void(0)" (click)="iniciarInspecao(sistema.idSistema)" class="btn btn-block btn-success" [disabled]="sistema.inspecaoConcluida" *ngIf="!sistema.inspecaoConcluida">INSPECIONAR</button>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div *ngIf="inspecaoConcluida" class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <b> Inspeção concluída!</b> Todos os itens foram inspecionados, caso possua informações adicionais sobre esta ronda de inspeção escreva no campo observação e clique em Finalizar Inspeção.
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">OBSERVAÇÃO (preenchimento opcional)</label>
+                <textarea id="txt_obs" class="form-control" rows="3"></textarea>
+            </div>
+
+            <button type="button" (click)="finalizarInspecao()" class="btn btn-success btn-block">FINALIZAR INSPEÇÃO</button>
+
+        </div>
+    </div>
+
+</div>

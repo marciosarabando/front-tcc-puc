@@ -1,0 +1,17 @@
+.container {
+    padding-top: 5em;
+}
+
+img {
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-family: "Poppins", sans-serif;
+    color: #5E6C84;
+    font-size: 16px;
+}
+
+input {
+    margin-bottom: 10px;
+}

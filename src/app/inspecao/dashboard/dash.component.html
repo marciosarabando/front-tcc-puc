@@ -1,0 +1,53 @@
+<div class="container">
+
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+              <h5><b><span class="fas fa-wrench"></span> PAINEL DE INSPEÇÃO</b></h5>
+              <h6>{{ estabelecimento }}</h6>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div>
+
+
+  <div *ngIf="inspecaoAndamento && inspecaoAndamento.possuiInspecaoAndamento" class="alert alert-primary" role="alert">
+    <b>{{ primeiroNome }}</b>, você possui uma inspeção em andamento, iniciada em {{ inspecaoAndamento.dataHoraInicio  | date:'dd/MM/yyyy HH:mm' }} hs, <a href="javascript:void(0)" (click)="AbrirInspecaoAndamento(inspecaoAndamento.idInspecao)">CLIQUE AQUI</a>  para acessar e continuar a sua ronda de inspeção.
+  </div>
+
+
+
+<div class="row">
+    <div class="col-sm-4" *ngIf="inspecaoAndamento && !inspecaoAndamento.possuiInspecaoAndamento">
+        <div class="card">
+            <div class="card-header">
+              <b>NOVA RONDA</b>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Clique para iniciar uma nova ronda de inspeção neste estabelecimento.</p>
+              <a href="javascript:void(0)" (click)="iniciarInspecao()" class="btn btn-block btn-success">INICIAR</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+          <div class="card-header">
+            <b>RELATÓRIOS</b>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Clique para vizualize os relatórios das Inspeções.</p>
+            <a href="javascript:void(0)" (click)="AbrirRelatorio()" class="btn btn-block btn-primary">ABRIR</a>
+          </div>
+        </div>
+  </div>
+
+</div>
+
+
+</div>

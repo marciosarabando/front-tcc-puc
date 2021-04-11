@@ -1,0 +1,91 @@
+<div class="container">
+    <br>
+    <title-page [titulo]="titulo" [nomeIcone]="nomeIcone"></title-page>
+    <br>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header">INCLUSÃO DE NOVO SISTEMA</div>
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group row">
+                          <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                          <div class="col-sm-10">
+                            <input type="text" style="text-transform: uppercase;" class="form-control" id="nome" placeholder="Nome">
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="descricao" placeholder="Descrição">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ">
+                            <div class="col-md-10">
+                                <h5>Itens de Inspeção</h5>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <button type="button" (click)="novoItem()" class="btn btn-primary btn-sm"><span class="fas fa-plus"></span> INCLUIR</button>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div *ngFor="let item of itensInspecao">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" style="text-transform: uppercase;" class="form-control form-control-sm" id="nome_item_{{ item }}" placeholder="Nome">
+                                        </div>
+                                    </div>  
+                                    <div class="form-group row">
+                                        <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="descricao_item_{{ item }}" placeholder="Descrição">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="descricao" class="col-sm-2 col-form-label">Unidade de Medida</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control form-control-sm" id="cmb_item_{{ item }}" placeholder="Selecione">
+                                                <option value="0">Selecione...</option>
+                                                <option *ngFor="let item of unidadeMedida" value="{{ item.id }}">{{ item.nome }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <button (click)="removerItem(item)" class="btn btn-sm btn-danger"><span class="fas fa-trash-alt"></span></button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+
+                    </form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button href="javascript:void(0)" [routerLink]="['/sistema/dash']" class="btn btn-sm btn-block btn-primary"><span class="fas fa-arrow-alt-circle-left"></span> VOLTAR</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button href="javascript:void(0)" (click)="salvar()" class="btn btn-sm btn-block btn-success"><span class="fas fa-save"></span> SALVAR</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+</div>

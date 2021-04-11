@@ -1,0 +1,115 @@
+<div class="container">
+    <br>
+    <title-page [titulo]="titulo" [nomeIcone]="nomeIcone"></title-page>
+    <br>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header" *ngIf="sistemaDetalhes"><b>{{ sistemaDetalhes.nome }}</b></div>
+                <div class="card-body">
+                    
+                    
+                        <div class="form-group row">
+                          <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                          <div class="col-sm-10">
+                            <input *ngIf="sistemaDetalhes" style="text-transform: uppercase;" type="text" class="form-control" id="nome" placeholder="Nome" value="{{ sistemaDetalhes.nome }}">
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                            <div class="col-sm-10">
+                              <input type="text" *ngIf="sistemaDetalhes" class="form-control" id="descricao" placeholder="Descrição" value="{{ sistemaDetalhes.descricao }}">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <div class="custom-control custom-switch">
+                                    <input *ngIf="sistemaDetalhes" type="checkbox" class="custom-control-input" (click)="ativaDesativaSistema()" id="customSwitch2_{{sistemaDetalhes.id}}" [checked]="sistemaDetalhes.ativo">
+                                    <label *ngIf="sistemaDetalhes" class="custom-control-label" for="customSwitch2_{{sistemaDetalhes.id}}"><label *ngIf="sistemaDetalhes.ativo" class="text-success">Ativo</label><label *ngIf="!sistemaDetalhes.ativo" class="text-danger">Inativo</label></label>
+                                </div>
+                            </div>                                            
+                        </div>
+
+                        <hr>
+                        <div class="row ">
+                            <div class="col-md-10">
+                                <h5>Itens de Inspeção</h5>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <button type="button" (click)="novoItem()" class="btn btn-primary btn-sm"><span class="fas fa-plus"></span> INCLUIR</button>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div *ngIf="sistemaDetalhes">
+                            <div *ngFor="let item of sistemaDetalhes.itensSistema">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" style="text-transform: uppercase;" class="form-control form-control-sm" id="nome_item_{{ item.id }}" placeholder="Nome" value="{{ item.nome }}">
+                                            </div>
+                                        </div>  
+
+                                        <div class="form-group row">
+                                            <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                                            <div class="col-sm-10">
+                                            <input type="text" class="form-control form-control-sm" id="descricao_item_{{ item.id }}" placeholder="Descrição" value="{{ item.descricao }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="descricao" class="col-sm-2 col-form-label">Unidade de Medida</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control form-control-sm" id="cmb_item_{{ item.id }}" placeholder="Selecione">
+                                                    <option value="0">Selecione...</option>
+                                                    <option *ngFor="let itemUnidadeMedida of unidadeMedida" value="{{ itemUnidadeMedida.id }}" [selected]="itemUnidadeMedida.id === item.idUnidadeMedida">{{ itemUnidadeMedida.nome }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="descricao" class="col-sm-2 col-form-label">Número de Ordem</label>
+                                            <div class="col-sm-10">
+                                            <input type="number" class="form-control form-control-sm" id="ordem_item_{{ item.id }}" placeholder="" value="{{ item.numeroOrdem }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" (click)="ativaDesativaItem(item.id)" id="customSwitch1_{{item.id}}" [checked]="item.ativo">
+                                                    <label class="custom-control-label" for="customSwitch1_{{item.id}}"><label *ngIf="item.ativo" class="text-success">Ativo</label><label *ngIf="!item.ativo" class="text-danger">Inativo</label></label>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button href="javascript:void(0)" [routerLink]="['/sistema/dash']" class="btn btn-sm btn-block btn-primary"><span class="fas fa-arrow-alt-circle-left"></span> VOLTAR</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button href="javascript:void(0)" (click)="salvar()" class="btn btn-sm btn-block btn-success"><span class="fas fa-save"></span> SALVAR</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

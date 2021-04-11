@@ -1,0 +1,41 @@
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-6">
+      <form class="form-signin" [formGroup]="loginForm">
+
+        <img src="./assets/logo.png" alt="" width="320" height="210" />
+
+        <h4>Fazer login no Inspec</h4>
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input formControlName="email" type="email" id="inputEmail" class="form-control col col-lg-12" placeholder="Informe seu e-mail"
+          required />
+        <span class="text-danger" *ngIf="displayMessage.email">
+            <p [innerHTML]="displayMessage.email"></p>
+        </span>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input formControlName="senha" type="password" id="inputPassword" class="form-control col col-lg-12"
+          placeholder="Informe sua senha" required />
+        <span class="text-danger" *ngIf="displayMessage.senha">
+            <p [innerHTML]="displayMessage.senha"></p>
+        </span>
+
+        <button class="btn btn-lg btn-success btn-block" (click)="login()">
+          Entrar
+        </button>
+
+        Ou
+
+        <button class="btn btn-lg btn-primary btn-block" (click)="loginGoogle()">
+          <i class="fa fa-google"></i> Entrar com o Google
+        </button>
+
+        <hr>
+        <a [routerLink]="['/conta/cadastro']">Criar uma conta</a>
+
+        <p class="mt-5 mb-3 text-muted">INSPEC - &copy; 2021</p>
+      </form>
+    </div>
+  </div>
+</div>

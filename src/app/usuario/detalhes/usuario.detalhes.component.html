@@ -1,0 +1,71 @@
+<div class="container">
+    <br>
+    <title-page [titulo]="titulo" [nomeIcone]="nomeIcone"></title-page>
+    <br>
+
+    <div class="card" *ngIf="usuario">
+        <div class="card-header">
+          <b>DADOS DO USUÁRIO</b>
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-2">
+              <h6><b>NOME:</b></h6>
+            </div>
+            <div class="col-10">
+              <h6>{{ usuario.nome }}</h6>
+            </div>
+          </div>
+<br>
+          <div class="row">
+            <div class="col-2">
+            <h6><b>EMAIL:</b></h6>
+            </div>
+            <div class="col-10">
+            <h6>{{ usuario.email }}</h6>
+            </div>
+          </div>
+<br>
+          <div class="row">
+            <div class="col-2">
+              <h6><b>PERFIL:</b></h6>
+            </div>
+            <div class="col-6">
+              <!-- {{ usuario.claims[0].valor }} -->
+              <select id="cmb_perfil" class="form-control" (change)="alteraPerfil()">
+                <option *ngFor="let claim of claims" [selected]="usuario.claims[0].valor === claim.valor">{{ claim.valor }}</option>
+              </select>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col-2">
+              <b>STATUS:</b>
+            </div>
+            <div class="col-6">
+              <!-- {{ usuario.ativo }} -->
+              <div class="custom-control custom-switch">
+                <input *ngIf="usuario" type="checkbox" class="custom-control-input" (click)="ativaDesativaUsuario()" id="customSwitch2" [checked]="usuario.ativo">
+                <label *ngIf="usuario" class="custom-control-label" for="customSwitch2"><label *ngIf="usuario.ativo" class="text-success">Ativo</label><label *ngIf="!usuario.ativo" class="text-danger">Inativo</label></label>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col-md-6">
+                <button href="javascript:void(0)" (click)="voltar()" class="btn btn-sm btn-block btn-primary"><span class="fas fa-arrow-alt-circle-left"></span> VOLTAR</button>
+            </div>
+            <div class="col-md-6">
+                <button href="javascript:void(0)" (click)="salvar()" class="btn btn-sm btn-block btn-success"><span class="fas fa-save"></span> SALVAR</button>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+</div>
